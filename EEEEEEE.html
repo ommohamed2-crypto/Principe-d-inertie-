@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon de Physique N°4 : Principe d'inertie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .author {
+            margin-top: 15px;
+            font-style: italic;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1a237e;
+            border-bottom: 2px solid #1a237e;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #283593;
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        .problem {
+            background-color: #e8eaf6;
+            padding: 20px;
+            border-left: 5px solid #1a237e;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .question {
+            font-weight: bold;
+            color: #1a237e;
+            margin: 15px 0 5px;
+        }
+        
+        .activity {
+            background-color: #f3f4f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .diagram {
+            background-color: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .diagram pre {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .formula {
+            background-color: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0d47a1;
+        }
+        
+        .exercise {
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid #388e3c;
+        }
+        
+        .exercise h4 {
+            color: #388e3c;
+            margin-bottom: 10px;
+        }
+        
+        .navigation {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .nav-title {
+            color: #1a237e;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nav-list {
+            list-style-type: none;
+        }
+        
+        .nav-list li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-list a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-list a:hover {
+            background-color: #e8eaf6;
+            color: #1a237e;
+            padding-left: 15px;
+        }
+        
+        .nav-list a.active {
+            background-color: #1a237e;
+            color: white;
+        }
+        
+        .toggle-btn {
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .toggle-btn:hover {
+            background-color: #283593;
+        }
+        
+        .hidden-content {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 3px solid #1a237e;
+        }
+        
+        .simulation {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        .simulation-canvas {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .controls button {
+            padding: 10px 20px;
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .controls button:hover {
+            background-color: #283593;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-atom"></i> Leçon N°4 : Principe d'inertie</h1>
+            <p class="subtitle">Centre d'inertie et systèmes isolés en mécanique</p>
+            <p class="author">Réalisé par Pr. AANIBA Abdelhalim - Cours de physique</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="content">
+            <main class="main-content">
+                <section id="problem" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Situation problème</h2>
+                    <p>On considère un homme monté sur sa moto, et roulant sur une route rectiligne et horizontale à vitesse constante, son centre d'inertie garde un <span class="highlight">mouvement rectiligne uniforme</span>. À un certain moment, l'homme freine ce qui l'amène à avancer.</p>
+                    
+                    <div class="problem">
+                        <div class="question">Qu'est-ce que c'est qu'un centre d'inertie ? Comment trouver sa position ?</div>
+                        <div class="question">Par quel principe peut-on expliquer cette observation ?</div>
+                    </div>
+                    
+                    <button class="toggle-btn" onclick="toggleSolution('solution1')">
+                        <i class="fas fa-lightbulb"></i> Voir la réponse
+                    </button>
+                    
+                    <div id="solution1" class="hidden-content">
+                        <p>Le centre d'inertie est le point particulier d'un corps où toute sa masse peut être considérée comme concentrée pour l'étude de son mouvement de translation. Pour un corps homogène et symétrique, il correspond généralement au centre géométrique.</p>
+                        <p>L'observation peut être expliquée par le <strong>principe d'inertie</strong> : lorsqu'un système est pseudo-isolé (somme des forces nulle), son centre d'inertie conserve son état de mouvement (repos ou mouvement rectiligne uniforme). Le freinage crée une force qui rompt cet équilibre.</p>
+                    </div>
+                </section>
+                
+                <section id="center-of-inertia" class="section">
+                    <h2><i class="fas fa-bullseye"></i> I. Centre d'inertie d'un corps solide</h2>
+                    
+                    <h3>1. Activité 1</h3>
+                    <div class="activity">
+                        <p>Nous envoyons un <strong>autoporteur en rotation</strong> sur une table à coussin d'air horizontale équipé de deux éclateurs dont l'une est l'éclateur central qui est fixée au point A et l'autre est fixée au point B, et on obtient l'enregistrement suivant :</p>
+                        
+                        <div class="diagram">
+                            <pre>
+    B₀   B₁   B₂   ...   ...
+    :    :    :    :     :
+    A₀   A₂   A₄   ...   ...
+    :    :    :    :     :
+                            </pre>
+                        </div>
+                        
+                        <div class="question">1. Comparer les trajectoires des deux points A et B</div>
+                        <div class="question">2. Quelle est la nature du mouvement du point A ? Déduire la nature du mouvement des points de l'axe de la symétrie verticale d'autoporteur passant par A</div>
+                        <div class="question">3. Si nous imaginons un autoporteur pouvant se déplacer sur différentes faces sur la table horizontale. Lorsque l'autoporteur se déplace sur <strong>la face EF</strong>, le mouvement des points de l'axe de symétrie verticale (A1) est rectiligne uniforme et lorsque l'autoporteur se déplace sur <strong>la face FM</strong>, le mouvement des points de l'axe de symétrie verticale (A2) est aussi rectiligne uniforme. Que remarquez-vous ?</div>
+                    </div>
+                    
+                    <button class="toggle-btn" onclick="toggleSolution('solution2')">
+                        <i class="fas fa-eye"></i> Voir les réponses
+                    </button>
+                    
+                    <div id="solution2" class="hidden-content">
+                        <p><strong>Réponse 1 :</strong> Le point A (centre) a une trajectoire rectiligne tandis que le point B (excentré) a une trajectoire plus complexe, probablement curviligne ou circulaire.</p>
+                        <p><strong>Réponse 2 :</strong> Le point A a un mouvement rectiligne uniforme. Les points sur l'axe de symétrie verticale passant par A ont également un mouvement rectiligne uniforme car ils sont alignés avec le centre d'inertie.</p>
+                        <p><strong>Réponse 3 :</strong> On remarque que quel que soit la face sur laquelle l'autoporteur se déplace, les points situés sur l'axe de symétrie verticale (passant par le centre d'inertie) ont toujours un mouvement rectiligne uniforme. Cela montre l'importance du centre d'inertie dans la description du mouvement.</p>
+                    </div>
+                    
+                    <h3>2. Conclusion</h3>
+                    <p>Chaque corps solide a un <strong>point spécial et unique appelé centre d'inertie</strong> du corps solide et noté G. Il représente le point d'intersection de ses axes de symétrie.</p>
+                    
+                    <div class="simulation">
+                        <h3><i class="fas fa-play-circle"></i> Simulation : Centre d'inertie</h3>
+                        <p>Visualisez le mouvement du centre d'inertie (point rouge) comparé à un point excentré (point bleu)</p>
+                        <canvas id="inertiaCanvas" class="simulation-canvas"></canvas>
+                        <div class="controls">
+                            <button onclick="startSimulation()"><i class="fas fa-play"></i> Démarrer</button>
+                            <button onclick="pauseSimulation()"><i class="fas fa-pause"></i> Pause</button>
+                            <button onclick="resetSimulation()"><i class="fas fa-redo"></i> Réinitialiser</button>
+                            <button onclick="toggleRotation()"><i class="fas fa-sync"></i> Rotation</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="inertia-principle" class="section">
+                    <h2><i class="fas fa-balance-scale"></i> II. Principe d'inertie</h2>
+                    
+                    <h3>1. Activité 2</h3>
+                    <div class="activity">
+                        <p>Nous envoyons l'autoporteur sur une table horizontale afin qu'il effectue un mouvement de <strong>translation rectiligne</strong>. On obtient alors l'enregistrement suivant :</p>
+                        
+                        <div class="diagram">
+                            <pre>
+    B₁   B₂   B₃   B₄
+    :    :    :    :
+    A₁   A₂   A₃   A₄
+                            </pre>
+                        </div>
+                        
+                        <div class="question">1. Comparer entre les mouvements des deux points A et B. Quelle est la nature du mouvement de G centre d'inertie de l'autoporteur ?</div>
+                        <div class="question">2. Faire l'inventaire des forces appliquées sur l'autoporteur pendant le mouvement. Déterminer la somme vectorielle de ces forces</div>
+                        <div class="question">3. Si on imagine que la table horizontale est infinie, le centre d'inertie de l'autoporteur G conservera-t-il le mouvement rectiligne uniforme ?</div>
+                    </div>
+                    
+                    <h3>2. Système isolé et pseudo-isolé</h3>
+                    <ul>
+                        <li>Un système est <strong>mécaniquement isolé</strong> s'il n'est soumis à aucune force. Ce genre de système n'existe pas en pratique (il y a toujours le poids du système et des frottements).</li>
+                        <li>Un système est <strong>pseudo-isolé</strong> si la somme vectorielle des forces extérieures auxquelles il est soumis est nulle : 
+                            <div class="formula">∑ F<sub>ext</sub> = 0</div>
+                        </li>
+                    </ul>
+                    
+                    <h3>3. Énoncé du principe d'inertie</h3>
+                    <p>Dans un référentiel galiléen, quand un solide est isolé ou pseudo-isolé (∑ F<sub>ext</sub> = 0), alors le vecteur vitesse de son centre d'inertie G est constant :</p>
+                    <div class="formula">v<sub>G</sub> = constante</div>
+                    <p>C'est-à-dire :</p>
+                    <ul>
+                        <li>Si v<sub>G</sub> = 0 : le centre d'inertie G est au repos</li>
+                        <li>Si v<sub>G</sub> ≠ 0 : le centre d'inertie G est en mouvement rectiligne uniforme</li>
+                    </ul>
+                    
+                    <div class="formula">Tout repère en mouvement rectiligne uniforme par rapport à un repère galiléen est un repère galiléen</div>
+                    
+                    <div class="exercise">
+                        <h4><i class="fas fa-pencil-alt"></i> Exercice d'application 1</h4>
+                        <p>Soit une grue soulevant un bloc de béton de masse m = 1500 kg. Cette grue soulève verticalement le morceau de béton, à l'aide d'un câble d'acier, rigide et tendu à vitesse constante.</p>
+                        
+                        <div class="question">1. Faire l'inventaire des forces appliquées sur le bloc de béton.</div>
+                        <div class="question">2. Calculer le poids P subit par le bloc de béton.</div>
+                        <div class="question">3. Le bloc de béton vérifie-t-il le principe d'inertie ? Justifier</div>
+                        <div class="question">4. Choisir un repère pour étudier le mouvement. Que s'appelle ce repère. Justifier</div>
+                        <div class="question">5. Déduire l'intensité de l'autre force appliquée sur le bloc de béton.</div>
+                        
+                        <button class="toggle-btn" onclick="toggleSolution('solution3')">
+                            <i class="fas fa-check-circle"></i> Voir la correction
+                        </button>
+                        
+                        <div id="solution3" class="hidden-content">
+                            <p><strong>1.</strong> Forces appliquées : le poids P (vertical, vers le bas) et la tension du câble T (verticale, vers le haut).</p>
+                            <p><strong>2.</strong> P = m × g = 1500 × 9.8 = 14700 N (14.7 kN).</p>
+                            <p><strong>3.</strong> Oui, car le bloc se déplace à vitesse constante (mouvement rectiligne uniforme), donc la somme des forces est nulle (principe d'inertie).</p>
+                            <p><strong>4.</strong> On choisit un repère lié au sol, car c'est un repère galiléen (le principe d'inertie y est vérifié).</p>
+                            <p><strong>5.</strong> Puisque ∑F = 0 et que le mouvement est rectiligne uniforme, on a T = P = 14700 N.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="barycentric-relation" class="section">
+                    <h2><i class="fas fa-weight-hanging"></i> III. Relation barycentrique</h2>
+                    
+                    <h3>1. Définition de centre de masse d'un système matériel</h3>
+                    <p>On appelle centre de masse d'un système se constituant de points matériels A<sub>i</sub> de masse m<sub>i</sub>, le barycentre C de ces points. Il est défini par la relation suivante :</p>
+                    
+                    <div class="formula">m₁CA₁ + m₂CA₂ + ⋯ + mₙCAₙ = 0 ⇒ ∑ mᵢCAᵢ = 0</div>
+                    
+                    <p><strong>N.B :</strong> Le centre d'inertie G d'un système matériel est confondu avec le centre de masse ce système.</p>
+                    
+                    <div class="exercise">
+                        <h4><i class="fas fa-pencil-alt"></i> Exercice d'application 2</h4>
+                        <p>Le schéma ci-contre représente des poids utiliser dans les exercices d'haltérophilie, ils sont composés de deux corps (S1) et (S2) de centre respectivement A1 et A2 et de mêmes masses m1 = m2 = m. Déterminer le centre de masse C de ce système.</p>
+                        
+                        <button class="toggle-btn" onclick="toggleSolution('solution4')">
+                            <i class="fas fa-check-circle"></i> Voir la correction
+                        </button>
+                        
+                        <div id="solution4" class="hidden-content">
+                            <p>Pour deux masses identiques, le centre de masse C se trouve exactement au milieu du segment reliant A1 et A2.</p>
+                            <p>Mathématiquement : C = (m₁A₁ + m₂A₂)/(m₁ + m₂) = (mA₁ + mA₂)/(2m) = (A₁ + A₂)/2</p>
+                            <p>Donc C est le milieu de [A₁A₂].</p>
+                        </div>
+                    </div>
+                    
+                    <h3>2. Relation barycentrique</h3>
+                    <p>Le centre d'inertie G d'un système composé des corps solides homogènes (S<sub>i</sub>) de centre d'inertie G<sub>i</sub> et de masse m<sub>i</sub> est donné par la relation :</p>
+                    
+                    <div class="formula">(∑ mᵢ) OG = ∑ mᵢ OGᵢ</div>
+                    
+                    <p>où :</p>
+                    <ul>
+                        <li>n : nombre de corps de système</li>
+                        <li>mᵢ : masse de chaque corps</li>
+                        <li>Gᵢ : centre d'inertie de chaque corps</li>
+                        <li>O : point quelconque fixe dans l'espace</li>
+                    </ul>
+                    
+                    <div class="exercise">
+                        <h4><i class="fas fa-pencil-alt"></i> Exercice d'application 3</h4>
+                        <p>On considère un marteau qui constitue d'un manche de masse m1 = 100 g et de centre d'inertie G1, et d'une tête métallique de masse m2 = 400 g et de centre d'inertie G2. Déterminer le centre d'inertie G du marteau.</p>
+                        
+                        <button class="toggle-btn" onclick="toggleSolution('solution5')">
+                            <i class="fas fa-check-circle"></i> Voir la correction
+                        </button>
+                        
+                        <div id="solution5" class="hidden-content">
+                            <p>En utilisant la relation barycentrique : (m₁ + m₂) OG = m₁ OG₁ + m₂ OG₂</p>
+                            <p>Soit (0.1 + 0.4) OG = 0.1 OG₁ + 0.4 OG₂</p>
+                            <p>0.5 OG = 0.1 OG₁ + 0.4 OG₂</p>
+                            <p>OG = (0.1 OG₁ + 0.4 OG₂) / 0.5 = 0.2 OG₁ + 0.8 OG₂</p>
+                            <p>Le centre d'inertie G se trouve plus près de G2 (tête métallique) car sa masse est plus importante. Plus précisément, G se trouve sur le segment [G₁G₂] à 80% de la distance de G₁ vers G₂.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="simulation">
+                        <h3><i class="fas fa-calculator"></i> Calculateur de centre d'inertie</h3>
+                        <p>Calculez le centre d'inertie d'un système à deux masses :</p>
+                        <div>
+                            <label for="mass1">Masse 1 (kg): </label>
+                            <input type="number" id="mass1" value="0.1" step="0.1" min="0.1" max="10">
+                            <label for="pos1"> Position 1 (m): </label>
+                            <input type="number" id="pos1" value="0" step="0.1" min="-5" max="5">
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <label for="mass2">Masse 2 (kg): </label>
+                            <input type="number" id="mass2" value="0.4" step="0.1" min="0.1" max="10">
+                            <label for="pos2"> Position 2 (m): </label>
+                            <input type="number" id="pos2" value="1" step="0.1" min="-5" max="5">
+                        </div>
+                        <button class="toggle-btn" onclick="calculateCenterOfMass()" style="margin-top: 15px;">
+                            <i class="fas fa-calculator"></i> Calculer le centre d'inertie
+                        </button>
+                        <div id="centerOfMassResult" class="hidden-content" style="margin-top: 15px;">
+                            <!-- Résultat sera affiché ici -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+            
+            <aside class="sidebar">
+                <div class="navigation">
+                    <div class="nav-title"><i class="fas fa-map-signs"></i> Navigation</div>
+                    <ul class="nav-list">
+                        <li><a href="#problem" onclick="setActive(this)">Situation problème</a></li>
+                        <li><a href="#center-of-inertia" onclick="setActive(this)">Centre d'inertie</a></li>
+                        <li><a href="#inertia-principle" onclick="setActive(this)">Principe d'inertie</a></li>
+                        <li><a href="#barycentric-relation" onclick="setActive(this)">Relation barycentrique</a></li>
+                    </ul>
+                    
+                    <div class="nav-title" style="margin-top: 30px;"><i class="fas fa-lightbulb"></i> Concepts clés</div>
+                    <ul class="nav-list">
+                        <li><span class="highlight">Centre d'inertie (G)</span></li>
+                        <li>Mouvement rectiligne uniforme</li>
+                        <li>Système isolé/pseudo-isolé</li>
+                        <li>Principe d'inertie</li>
+                        <li>Référentiel galiléen</li>
+                        <li>Relation barycentrique</li>
+                    </ul>
+                    
+                    <div class="nav-title" style="margin-top: 30px;"><i class="fas fa-tools"></i> Outils interactifs</div>
+                    <ul class="nav-list">
+                        <li><a href="#" onclick="document.getElementById('inertiaCanvas').scrollIntoView(); setActive(this);">Simulation centre d'inertie</a></li>
+                        <li><a href="#" onclick="document.getElementById('centerOfMassResult').scrollIntoView(); setActive(this);">Calculateur de centre de masse</a></li>
+                        <li><a href="#" onclick="showAllSolutions(); setActive(this);">Afficher toutes les réponses</a></li>
+                        <li><a href="#" onclick="hideAllSolutions(); setActive(this);">Cacher toutes les réponses</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        
+        <footer>
+            <p>Réalisé par Pr. AANIBA Abdelhalim - Cours de physique</p>
+            <p>Transformé en page web interactive - Leçon N°4 : Principe d'inertie</p>
+            <p><i class="far fa-copyright"></i> 2023 - Tous droits réservés</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Fonction pour afficher/masquer le contenu caché
+        function toggleSolution(id) {
+            const element = document.getElementById(id);
+            if (element.style.display === "block") {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block";
+            }
+        }
+        
+        // Fonction pour afficher toutes les solutions
+        function showAllSolutions() {
+            const solutions = document.querySelectorAll('.hidden-content');
+            solutions.forEach(solution => {
+                solution.style.display = "block";
+            });
+        }
+        
+        // Fonction pour cacher toutes les solutions
+        function hideAllSolutions() {
+            const solutions = document.querySelectorAll('.hidden-content');
+            solutions.forEach(solution => {
+                solution.style.display = "none";
+            });
+        }
+        
+        // Fonction pour activer un lien dans la navigation
+        function setActive(element) {
+            // Retirer la classe active de tous les liens
+            document.querySelectorAll('.nav-list a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Ajouter la classe active au lien cliqué
+            element.classList.add('active');
+        }
+        
+        // Calculateur de centre de masse
+        function calculateCenterOfMass() {
+            const mass1 = parseFloat(document.getElementById('mass1').value);
+            const pos1 = parseFloat(document.getElementById('pos1').value);
+            const mass2 = parseFloat(document.getElementById('mass2').value);
+            const pos2 = parseFloat(document.getElementById('pos2').value);
+            
+            if (isNaN(mass1) || isNaN(pos1) || isNaN(mass2) || isNaN(pos2)) {
+                alert("Veuillez entrer des valeurs valides");
+                return;
+            }
+            
+            const totalMass = mass1 + mass2;
+            const centerOfMass = (mass1 * pos1 + mass2 * pos2) / totalMass;
+            
+            const resultDiv = document.getElementById('centerOfMassResult');
+            resultDiv.innerHTML = `
+                <p><strong>Centre d'inertie calculé :</strong></p>
+                <p>Masse totale : ${totalMass.toFixed(2)} kg</p>
+                <p>Position du centre d'inertie : ${centerOfMass.toFixed(2)} m</p>
+                <p>Le centre d'inertie est plus proche de ${mass1 > mass2 ? 'la masse 1' : 'la masse 2'} car elle a une masse plus importante (${Math.max(mass1, mass2).toFixed(2)} kg vs ${Math.min(mass1, mass2).toFixed(2)} kg).</p>
+            `;
+            resultDiv.style.display = "block";
+        }
+        
+        // Simulation graphique du centre d'inertie
+        let animationId = null;
+        let isPaused = false;
+        let rotationEnabled = false;
+        let time = 0;
+        
+        function startSimulation() {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            isPaused = false;
+            animate();
+        }
+        
+        function pauseSimulation() {
+            isPaused = true;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        }
+        
+        function resetSimulation() {
+            time = 0;
+            drawSimulation();
+        }
+        
+        function toggleRotation() {
+            rotationEnabled = !rotationEnabled;
+            const btn = document.querySelector('button[onclick="toggleRotation()"]');
+            btn.innerHTML = rotationEnabled ? '<i class="fas fa-sync-alt"></i> Translation' : '<i class="fas fa-sync"></i> Rotation';
+        }
+        
+        function drawSimulation() {
+            const canvas = document.getElementById('inertiaCanvas');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Effacer le canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Dessiner la grille
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 0.5;
+            
+            // Lignes verticales
+            for (let x = 0; x < width; x += 40) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            
+            // Lignes horizontales
+            for (let y = 0; y < height; y += 40) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // Position centrale pour le centre d'inertie
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            // Calcul des positions en fonction du temps
+            const speed = 0.05;
+            const amplitude = 150;
+            const rotationSpeed = 0.03;
+            
+            // Position du centre d'inertie (point rouge)
+            let centerInertiaX, centerInertiaY;
+            
+            if (rotationEnabled) {
+                // Mouvement circulaire pour la simulation de rotation
+                const radius = 100;
+                centerInertiaX = centerX + radius * Math.cos(time * rotationSpeed);
+                centerInertiaY = centerY + radius * Math.sin(time * rotationSpeed);
+            } else {
+                // Mouvement rectiligne uniforme
+                centerInertiaX = centerX + amplitude * Math.sin(time * speed);
+                centerInertiaY = centerY;
+            }
+            
+            // Position d'un point excentré (point bleu)
+            let offsetX, offsetY;
+            
+            if (rotationEnabled) {
+                // En rotation, le point excentré a un mouvement plus complexe
+                const pointRadius = 50;
+                const angularOffset = Math.PI / 3; // 60 degrés de décalage
+                offsetX = centerInertiaX + pointRadius * Math.cos(time * rotationSpeed * 2 + angularOffset);
+                offsetY = centerInertiaY + pointRadius * Math.sin(time * rotationSpeed * 2 + angularOffset);
+            } else {
+                // En translation, le point excentré suit le même mouvement que le centre d'inertie
+                offsetX = centerInertiaX + 40;
+                offsetY = centerInertiaY + 40;
+            }
+            
+            // Dessiner le corps (rectangle)
+            ctx.fillStyle = 'rgba(200, 230, 255, 0.5)';
+            ctx.strokeStyle = '#1a237e';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            if (rotationEnabled) {
+                // Rectangle incliné en rotation
